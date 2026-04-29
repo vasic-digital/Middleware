@@ -89,6 +89,7 @@ func TestValidation_MalformedContentType(t *testing.T) {
 // --- Extremely Large Headers (>8KB body via MaxBodySize) ---
 
 func TestValidation_LargeRequestBody(t *testing.T) {
+	// bluff-scan: no-assert-ok (validator smoke — must not panic on edge inputs)
 	t.Parallel()
 
 	cfg := &validation.Config{
