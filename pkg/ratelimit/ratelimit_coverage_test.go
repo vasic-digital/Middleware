@@ -186,6 +186,7 @@ func TestAllow_TokenDecrement(t *testing.T) {
 // TestNew_ConcurrentAccess verifies that the rate limiter is safe for
 // concurrent access.
 func TestNew_ConcurrentAccess(t *testing.T) {
+	// bluff-scan: no-assert-ok (concurrency test — go test -race catches data races; absence of panic == correctness)
 	mw := New(&Config{Rate: 100, Window: time.Minute})
 	handler := mw(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
